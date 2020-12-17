@@ -13,8 +13,8 @@ app.get("/available", async (req, res) => {
     var endDate: any = req.query.endDate;
     var resourceId: any = req.query.resourceId;
     if (
-      !moment(startDate, "YYYY-MM-DD HH:mm", true).isValid() ||
-      !moment(endDate, "YYYY-MM-DD HH:mm", true).isValid()
+      !moment(startDate, "YYYY-MM-DD HH:mm:SS", true).isValid() ||
+      !moment(endDate, "YYYY-MM-DD HH:mm:SS", true).isValid()
     ) {
       res
         .status(400)
@@ -58,7 +58,6 @@ app.get("/available", async (req, res) => {
       res.json({ available: false });
     }
   } catch (error) {
-    console.log("test1");
     res.status(400).json({ error: "unknown error occured" });
   }
 });
